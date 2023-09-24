@@ -1,0 +1,72 @@
+package p1;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.TreeSet;
+
+public class FoodApp {
+public static void main(String[] args) {
+TreeSet<Food> allFoods=new TreeSet<>();
+Food f1 = new Food("CHI",100,"NON-VEG");
+Food f2 = new Food("VEG",250,"VEG");
+Food f3 = new Food("DUM",600,"NON-VEG");
+Food f4 = new Food("PANNER",300,"VEG");
+Food f5 = new Food("MUTTON",800,"NON-VEG");
+Food f6 = new Food("EGG",400,"NON-VEG");
+  allFoods.add(f1);
+  allFoods.add(f2);
+  allFoods.add(f3);
+  allFoods.add(f4);
+  allFoods.add(f5);
+  allFoods.add(f6);
+  for (Food food : allFoods){
+     System.out.println(food);			
+
+}
+    System.out.println("---  Food (Low to High)  ----------");
+    FoodBasedOnPriceLowToHigh(allFoods);
+   System.out.println("---  Food (High to Low)  ----------");
+   FoodBasedOnPriceHighToLow(allFoods);
+
+	
+		}
+private static void FoodBasedOnPriceHighToLow(TreeSet<Food> allFoods) {
+	// Step1 -> convert set to List
+			List<Food> tempList = new ArrayList<>();// or pass as constructor argument
+			tempList.addAll(allFoods);
+			
+			// Step 2-> create Comprator class Object
+			FoodOnPriceHighToLow  sortCode = new FoodOnPriceHighToLow();
+			
+			Collections.sort(tempList, sortCode);
+			
+			for (Food food : tempList) {
+				System.out.println(food);
+			}
+			 
+		}
+		
+
+private static void FoodBasedOnPriceLowToHigh(TreeSet<Food> allFoods) {
+	// Step1 -> convert set to List
+			List<Food> tempList = new ArrayList<>();// or pass as constructor argument
+			tempList.addAll(allFoods);
+			
+			// Step 2-> create Comprator class Object
+			FoodOnPriceLowToHigh sortCode = new FoodOnPriceLowToHigh();
+			
+			Collections.sort(tempList, sortCode);
+			
+			for (Food food : tempList) {
+				System.out.println(food);
+			}
+			 
+		}
+//end class
+}
+	
+	
+
+
+
